@@ -4,7 +4,15 @@ import React from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import NavigationHeader from "@/components/NavigationHeader";
-import { getLevelsByPattern, getLevelById } from "@/data/levels";
+import { getLevelsByPattern, getLevelById, allLevels } from "@/data/levels";
+
+// Pre-render all structure routes for static export
+export function generateStaticParams() {
+  const patternIds = [...new Set(allLevels.map((l) => l.pattern.id))];
+  return patternIds.map((patternId) => ({
+    levelId: patternId,
+  }));
+}
 
 export default function StructureDetailPage() {
   const params = useParams();

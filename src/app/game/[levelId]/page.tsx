@@ -6,8 +6,15 @@ import { GameProvider, useGameContext } from "@/context/GameContext";
 import GameBoard from "@/components/GameBoard";
 import NavigationHeader from "@/components/NavigationHeader";
 import VocabPreview from "@/components/VocabPreview";
-import { getLevelById } from "@/data/levels";
+import { getLevelById, allLevels } from "@/data/levels";
 import { Level } from "@/types";
+
+// Pre-render all level routes for static export
+export function generateStaticParams() {
+  return allLevels.map((level) => ({
+    levelId: level.id,
+  }));
+}
 
 function GameContent() {
   const params = useParams();
