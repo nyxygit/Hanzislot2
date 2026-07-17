@@ -18,6 +18,7 @@ interface SlotColumnProps {
   onSelect: (option: string) => void;
   disabled?: boolean;
   fixed?: boolean;
+  showPinyin?: boolean;
 }
 
 const partOfSpeechLabels: Record<PartOfSpeech, string> = {
@@ -45,6 +46,7 @@ export default function SlotColumn({
   onSelect,
   disabled = false,
   fixed = false,
+  showPinyin = true,
 }: SlotColumnProps) {
   const selectedPinyin = optionPinyins[selectedIndex] ?? pinyin;
   const selectedEnglish = optionEnglishs[selectedIndex] ?? english;
@@ -215,8 +217,10 @@ export default function SlotColumn({
         </div>
       )}
 
-      {/* Pinyin */}
-      <p className="text-[11px] sm:text-sm text-[var(--color-wood)] font-medium md:mb-2">{selectedPinyin}</p>
+      {/* Pinyin — toggleable */}
+      {showPinyin && (
+        <p className="text-[11px] sm:text-sm text-[var(--color-wood)] font-medium md:mb-2">{selectedPinyin}</p>
+      )}
 
       {/* English meaning — only shown after sentence is submitted */}
       {hasBeenChecked && (

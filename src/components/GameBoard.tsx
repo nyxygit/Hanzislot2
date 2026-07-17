@@ -69,6 +69,7 @@ export default function GameBoard() {
   const slotsContainerRef = useRef<HTMLDivElement>(null);
   const [slotsOverflow, setSlotsOverflow] = useState(false);
   const [showVocabPopup, setShowVocabPopup] = useState(false);
+  const [showPinyin, setShowPinyin] = useState(true);
 
   useEffect(() => {
     const el = slotsContainerRef.current;
@@ -218,6 +219,7 @@ export default function GameBoard() {
             onSelect={(option) => selectOption(i, option)}
             disabled={phase === "result" || (phase === "checking" && slot.isCorrect === true)}
             fixed={fixed}
+            showPinyin={showPinyin}
           />
         </div>
       );
@@ -233,8 +235,8 @@ export default function GameBoard() {
         totalSentences={totalSentences}
       />
 
-      {/* Pattern badge + Vocab toggle */}
-      <div className="mb-2 md:mb-6 flex items-center gap-2">
+      {/* Pattern badge + Vocab toggle + Pinyin toggle */}
+      <div className="mb-2 md:mb-6 flex items-center gap-2 flex-wrap justify-center">
         <span className="text-[10px] sm:text-xs font-medium text-[var(--color-primary)] bg-[var(--color-primary-light)] px-3 py-1 rounded-full">
           Pattern: {state.level.pattern.name}
         </span>
@@ -243,6 +245,16 @@ export default function GameBoard() {
           className="text-[10px] sm:text-xs font-medium text-[var(--color-wood)] bg-[var(--color-paper-dark)] hover:bg-[var(--color-gold-light)] px-3 py-1 rounded-full transition-colors"
         >
           Vocabulary
+        </button>
+        <button
+          onClick={() => setShowPinyin((prev) => !prev)}
+          className={`text-[10px] sm:text-xs font-medium px-3 py-1 rounded-full transition-colors ${
+            showPinyin
+              ? "bg-[var(--color-primary-light)] text-[var(--color-primary)]"
+              : "bg-[var(--color-paper-dark)] text-[var(--color-wood)] hover:bg-[var(--color-gold-light)]"
+          }`}
+        >
+          {showPinyin ? "Pinyin ON" : "Pinyin OFF"}
         </button>
       </div>
 
