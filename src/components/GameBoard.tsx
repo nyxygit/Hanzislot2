@@ -207,7 +207,7 @@ export default function GameBoard() {
           <SlotColumn
             options={slot.options}
             selectedIndex={fixedSelectedIndex >= 0 ? fixedSelectedIndex : slot.selectedIndex}
-            label={state.level!.pattern.structure[structureIndex]}
+            label={currentSentence.parts[i]?.partOfSpeech as string}
             partOfSpeech={currentSentence.parts[i]?.partOfSpeech as PartOfSpeech}
             isCorrect={slot.isCorrect}
             hasBeenChecked={slot.hasBeenChecked}

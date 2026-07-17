@@ -33,8 +33,16 @@ export default function Home() {
   }, []);
 
   // Group levels by pattern
+  const mixLevels = levels.filter((l) => l.pattern.id === "s-mix");
   const shiLevels = levels.filter((l) => l.pattern.id === "s-shi-n");
   const henLevels = levels.filter((l) => l.pattern.id === "s-hen-adj");
+  const yinggaiLevels = levels.filter((l) => l.pattern.id === "s-yinggai-v");
+  const haishiLevels = levels.filter((l) => l.pattern.id === "s-haishi-n");
+  const huozheLevels = levels.filter((l) => l.pattern.id === "s-huozhe-n");
+  const svoLevels = levels.filter((l) => l.pattern.id === "s-v-o");
+  const youLevels = levels.filter((l) => l.pattern.id === "s-you-o");
+  const zaiLevels = levels.filter((l) => l.pattern.id === "s-zai-o");
+  const leLevels = levels.filter((l) => l.pattern.id === "s-le-v-o");
 
   if (loading) {
     return (
@@ -61,8 +69,42 @@ export default function Home() {
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-4 py-8 md:py-10">
+        {/* Mix Challenge */}
+        {mixLevels.length > 0 && (
+          <section className="mb-12">
+            <div className="mb-4">
+              <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+                🎲 Mix Challenge
+              </h2>
+              <p className="text-sm text-[var(--color-wood)] mt-1">
+                A random mix of 10 sentences from all patterns. Test your overall Chinese skills!
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {mixLevels.map((level) => {
+                const completedLevel = progress?.completedLevels[level.id];
+                const bestStars = completedLevel?.stars ?? 0;
+                const bestScore = completedLevel?.score ?? 0;
+                const maxScore = level.sentences.length * 3;
+
+                return (
+                  <LevelSelectCard
+                    key={level.id}
+                    level={level}
+                    stars={bestStars}
+                    completed={completedLevel?.completed ?? false}
+                    score={bestScore}
+                    maxScore={maxScore}
+                    onVocabClick={() => setVocabPreviewLevel(level)}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        )}
+
         {/* Pattern: Subject + 是 + Noun */}
-        <section className="mb-10">
+        <section className="mb-12">
           <div className="mb-4">
             <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
               Subject + 是 + Noun
@@ -94,7 +136,7 @@ export default function Home() {
         </section>
 
         {/* Pattern: Subject + 很 + Adjective */}
-        <section>
+        <section className="mb-12">
           <div className="mb-4">
             <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
               Subject + 很 + Adjective
@@ -105,6 +147,230 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {henLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 应该 + Verb */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 应该 + Verb
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 应该 (yīnggāi) to say what someone should or ought to do, like English &ldquo;should&rdquo;.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {yinggaiLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Noun + 还是 + Noun */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Noun + 还是 + Noun
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 还是 (háishì) to ask &ldquo;or&rdquo; questions offering alternatives, like English &ldquo;A or B?&rdquo;.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {haishiLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Noun + 或者 + Noun */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Noun + 或者 + Noun
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 或者 (huòzhě) to say &ldquo;or&rdquo; in statements presenting options, like English &ldquo;A or B&rdquo;.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {huozheLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + Verb + Object */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + Verb + Object
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              The basic Chinese sentence structure: who does what to what. Each sub-level focuses on one common verb.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {svoLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 有 + Object */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 有 + Object
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 有 (yǒu) to express possession or existence, like English &ldquo;have&rdquo; or &ldquo;there is&rdquo;.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {youLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 在 + Location */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 在 + Location
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 在 (zài) to say where someone or something is located, like English &ldquo;at&rdquo;, &ldquo;in&rdquo;, or &ldquo;on&rdquo;.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {zaiLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + Verb + 了 + Object */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + Verb + 了 + Object
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Add 了 (le) after a verb to show an action has been completed, like English past tense.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {leLevels.map((level) => {
               const completedLevel = progress?.completedLevels[level.id];
               const bestStars = completedLevel?.stars ?? 0;
               const bestScore = completedLevel?.score ?? 0;
