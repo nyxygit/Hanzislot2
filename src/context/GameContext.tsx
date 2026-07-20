@@ -4,6 +4,7 @@ import React, { createContext, useContext, useReducer, useCallback, useState } f
 import { GameState, GameAction, Level } from "@/types";
 import { gameReducer, initialGameState } from "@/engine/gameReducer";
 import { fetchLevel } from "@/lib/api";
+import { shuffle } from "@/engine/shuffle";
 
 interface GameContextValue {
   state: GameState;
@@ -27,7 +28,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     try {
       const level = await fetchLevel(levelId);
       if (level) {
-        dispatch({ type: "LOAD_LEVEL", level });
+        // Shuffle sentences for the mix-challenge level so it's different each time
+        if (level.id === "mix-challenge") {
+          const shuffled = { ...level, sentences: shuffle(level.sentences) };
+          dispatch({ type: "LOAD_LEVEL", level: shuffled });
+        } else {
+          dispatch({ type: "LOAD_LEVEL", level });
+        }
       }
     } finally {
       setIsLoading(false);
