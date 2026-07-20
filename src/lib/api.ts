@@ -1,5 +1,6 @@
 import { Level } from "@/types";
-import { loadLevel, loadAllLevels } from "@/data/levels";
+import { loadLevel, loadAllLevels, allLevels } from "@/data/levels";
+import { shuffle } from "@/engine/shuffle";
 
 // API abstraction layer
 // Currently uses static data. When a backend is ready:
@@ -30,6 +31,41 @@ export async function fetchLevels(): Promise<Level[]> {
  * Get a single level by ID
  */
 export async function fetchLevel(id: string): Promise<Level | undefined> {
+  // Dynamically build the mix challenge from all registered levels
+  if (id === "mix-challenge") {
+    const otherLevels = allLevels.filter((l) => l.id !== "mix-challenge");
+    const pickedSentences = otherLevels.map((level) => {
+      const randomIndex = Math.floor(Math.random() * level.sentences.length);
+      return level.sentences[randomIndex];
+    });
+    // Build a vocabulary set from all source levels
+    const vocabMap = new Map<string, { chinese: string; pinyin: string; english: string; partOfSpeech: "subject" | "verb" | "object" | "adjective" | "noun" | "particle" }>();
+    for (const level of otherLevels) {
+      if (level.vocabulary) {
+        for (const entry of level.vocabulary) {
+          if (!vocabMap.has(entry.chinese)) {
+            vocabMap.set(entry.chinese, entry);
+          }
+        }
+      }
+    }
+    return {
+      id: "mix-challenge",
+      name: "🎲 Mix Challenge",
+      description: "10 random sentences from all patterns — test your skills!",
+      pattern: {
+        id: "s-mix",
+        name: "Mix Challenge",
+        description: "A random mix of sentences from all patterns.",
+        structure: ["subject", "particle", "verb", "object"],
+        subLevels: 1,
+      },
+      subLevelIndex: 1,
+      starThresholds: [25, 18, 10],
+      vocabulary: Array.from(vocabMap.values()),
+      sentences: pickedSentences,
+    };
+  }
   return loadLevel(id);
 }
 

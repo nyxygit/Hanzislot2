@@ -43,6 +43,7 @@ export default function Home() {
   const youLevels = levels.filter((l) => l.pattern.id === "s-you-o");
   const zaiLevels = levels.filter((l) => l.pattern.id === "s-zai-o");
   const leLevels = levels.filter((l) => l.pattern.id === "s-le-v-o");
+  const zhengzaiLevels = levels.filter((l) => l.pattern.id === "s-zhengzai-ne");
 
   if (loading) {
     return (
@@ -371,6 +372,38 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {leLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 正在 + Verb + 呢 */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 正在 + Verb + 呢
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 正在...呢 (zhèngzài...ne) to describe an action in progress, like English &ldquo;-ing&rdquo;.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {zhengzaiLevels.map((level) => {
               const completedLevel = progress?.completedLevels[level.id];
               const bestStars = completedLevel?.stars ?? 0;
               const bestScore = completedLevel?.score ?? 0;

@@ -51,6 +51,11 @@ import { le01EatingDrinking } from "./levels/le/le-01-eating-drinking";
 import { le02DailyActivities } from "./levels/le/le-02-daily-activities";
 import { le03GoingComing } from "./levels/le/le-03-going-coming";
 
+// Import 正在...呢 pattern sub-levels
+import { zhengzai01EatingDrinking } from "./levels/zhengzai/zhengzai-01-eating-drinking";
+import { zhengzai02DailyActivities } from "./levels/zhengzai/zhengzai-02-daily-activities";
+import { zhengzai03ActionsMovement } from "./levels/zhengzai/zhengzai-03-actions-movement";
+
 // All levels in order
 export const allLevels: Level[] = [
   mixChallenge,
@@ -84,6 +89,9 @@ export const allLevels: Level[] = [
   le01EatingDrinking,
   le02DailyActivities,
   le03GoingComing,
+  zhengzai01EatingDrinking,
+  zhengzai02DailyActivities,
+  zhengzai03ActionsMovement,
 ];
 
 // Index levels by ID for quick lookup

@@ -70,6 +70,17 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "说中文", pinyin: "shuō zhōng wén", english: "speak Chinese" },
     { chinese: "多喝水", pinyin: "duō hē shuǐ", english: "drink more water" },
     { chinese: "看医生", pinyin: "kàn yī shēng", english: "see a doctor" },
+    { chinese: "吃饭", pinyin: "chī fàn", english: "eat a meal" },
+    { chinese: "喝水", pinyin: "hē shuǐ", english: "drink water" },
+    { chinese: "跑步", pinyin: "pǎo bù", english: "run / jog" },
+    { chinese: "玩游戏", pinyin: "wán yóu xì", english: "play a game" },
+    { chinese: "写字", pinyin: "xiě zì", english: "write characters" },
+    { chinese: "听音乐", pinyin: "tīng yīn yuè", english: "listen to music" },
+    { chinese: "喝茶", pinyin: "hē chá", english: "drink tea" },
+    { chinese: "喝咖啡", pinyin: "hē kā fēi", english: "drink coffee" },
+    { chinese: "吃苹果", pinyin: "chī píng guǒ", english: "eat an apple" },
+    { chinese: "吃面包", pinyin: "chī miàn bāo", english: "eat bread" },
+    { chinese: "看电视", pinyin: "kàn diàn shì", english: "watch TV" },
     // Verb + 了 forms for completed actions
     { chinese: "吃了", pinyin: "chī le", english: "ate" },
     { chinese: "喝了", pinyin: "hē le", english: "drank" },
@@ -236,6 +247,7 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "都", pinyin: "dōu", english: "all / both" },
     { chinese: "还", pinyin: "hái", english: "still / also" },
     { chinese: "应该", pinyin: "yīng gāi", english: "should / ought to" },
+    { chinese: "正在", pinyin: "zhèng zài", english: "in the process of" },
   ],
 };
 
