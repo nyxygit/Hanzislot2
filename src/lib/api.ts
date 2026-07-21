@@ -34,10 +34,12 @@ export async function fetchLevel(id: string): Promise<Level | undefined> {
   // Dynamically build the mix challenge from all registered levels
   if (id === "mix-challenge") {
     const otherLevels = allLevels.filter((l) => l.id !== "mix-challenge");
-    const pickedSentences = otherLevels.map((level) => {
+    // Pick one random sentence from each level, then shuffle and take 10
+    const candidates = otherLevels.map((level) => {
       const randomIndex = Math.floor(Math.random() * level.sentences.length);
       return level.sentences[randomIndex];
     });
+    const pickedSentences = shuffle(candidates).slice(0, 10);
     // Build a vocabulary set from all source levels
     const vocabMap = new Map<string, { chinese: string; pinyin: string; english: string; partOfSpeech: "subject" | "verb" | "object" | "adjective" | "noun" | "particle" }>();
     for (const level of otherLevels) {
