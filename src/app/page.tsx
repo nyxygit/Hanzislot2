@@ -44,6 +44,9 @@ export default function Home() {
   const zaiLevels = levels.filter((l) => l.pattern.id === "s-zai-o");
   const leLevels = levels.filter((l) => l.pattern.id === "s-le-v-o");
   const zhengzaiLevels = levels.filter((l) => l.pattern.id === "s-zhengzai-ne");
+  const yaoLevels = levels.filter((l) => l.pattern.id === "s-yao-o");
+  const xiangLevels = levels.filter((l) => l.pattern.id === "s-xiang-v");
+  const xuyaoLevels = levels.filter((l) => l.pattern.id === "s-xuyao-o");
 
   if (loading) {
     return (
@@ -200,11 +203,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pattern: Noun + 还是 + Noun */}
+        {/* Pattern: Noun + 还是 + Noun (Questions) */}
         <section className="mb-12">
           <div className="mb-4">
             <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
-              Noun + 还是 + Noun
+              ❓ Noun + 还是 + Noun — Questions
             </h2>
             <p className="text-sm text-[var(--color-wood)] mt-1">
               Use 还是 (háishì) to ask &ldquo;or&rdquo; questions offering alternatives, like English &ldquo;A or B?&rdquo;.
@@ -232,11 +235,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pattern: Noun + 或者 + Noun */}
+        {/* Pattern: Noun + 或者 + Noun (Statements) */}
         <section className="mb-12">
           <div className="mb-4">
             <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
-              Noun + 或者 + Noun
+              📝 Noun + 或者 + Noun — Statements
             </h2>
             <p className="text-sm text-[var(--color-wood)] mt-1">
               Use 或者 (huòzhě) to say &ldquo;or&rdquo; in statements presenting options, like English &ldquo;A or B&rdquo;.
@@ -404,6 +407,102 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {zhengzaiLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 要 + Object */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 要 + Object — Want
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 要 (yào) to say what you want — direct and intentional. Stronger than 想.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {yaoLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 想 + Verb */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 想 + Verb — Would Like
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 想 (xiǎng) to say what you would like — softer and more polite than 要.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {xiangLevels.map((level) => {
+              const completedLevel = progress?.completedLevels[level.id];
+              const bestStars = completedLevel?.stars ?? 0;
+              const bestScore = completedLevel?.score ?? 0;
+              const maxScore = level.sentences.length * 3;
+
+              return (
+                <LevelSelectCard
+                  key={level.id}
+                  level={level}
+                  stars={bestStars}
+                  completed={completedLevel?.completed ?? false}
+                  score={bestScore}
+                  maxScore={maxScore}
+                  onVocabClick={() => setVocabPreviewLevel(level)}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Pattern: Subject + 需要 + Object */}
+        <section className="mb-12">
+          <div className="mb-4">
+            <h2 className="text-xl md:text-2xl font-bold text-[var(--color-ink)]">
+              Subject + 需要 + Object — Need
+            </h2>
+            <p className="text-sm text-[var(--color-wood)] mt-1">
+              Use 需要 (xū yào) to express necessity — what you need.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {xuyaoLevels.map((level) => {
               const completedLevel = progress?.completedLevels[level.id];
               const bestStars = completedLevel?.stars ?? 0;
               const bestScore = completedLevel?.score ?? 0;

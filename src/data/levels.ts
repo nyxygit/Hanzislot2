@@ -56,6 +56,21 @@ import { zhengzai01EatingDrinking } from "./levels/zhengzai/zhengzai-01-eating-d
 import { zhengzai02DailyActivities } from "./levels/zhengzai/zhengzai-02-daily-activities";
 import { zhengzai03ActionsMovement } from "./levels/zhengzai/zhengzai-03-actions-movement";
 
+// Import 要 pattern sub-levels
+import { yao01FoodDrink } from "./levels/yao/yao-01-food-drink";
+import { yao02Things } from "./levels/yao/yao-02-things";
+import { yao03Actions } from "./levels/yao/yao-03-actions";
+
+// Import 想 pattern sub-levels
+import { xiang01FoodDrink } from "./levels/xiang/xiang-01-food-drink";
+import { xiang02Activities } from "./levels/xiang/xiang-02-activities";
+import { xiang03Places } from "./levels/xiang/xiang-03-places";
+
+// Import 需要 pattern sub-levels
+import { xuyao01BasicNeeds } from "./levels/xuyao/xuyao-01-basic-needs";
+import { xuyao02WorkStudy } from "./levels/xuyao/xuyao-02-work-study";
+import { xuyao03HealthLife } from "./levels/xuyao/xuyao-03-health-life";
+
 // All levels in order
 export const allLevels: Level[] = [
   mixChallenge,
@@ -92,6 +107,15 @@ export const allLevels: Level[] = [
   zhengzai01EatingDrinking,
   zhengzai02DailyActivities,
   zhengzai03ActionsMovement,
+  yao01FoodDrink,
+  yao02Things,
+  yao03Actions,
+  xiang01FoodDrink,
+  xiang02Activities,
+  xiang03Places,
+  xuyao01BasicNeeds,
+  xuyao02WorkStudy,
+  xuyao03HealthLife,
 ];
 
 // Index levels by ID for quick lookup

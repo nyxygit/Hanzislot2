@@ -81,6 +81,8 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "吃苹果", pinyin: "chī píng guǒ", english: "eat an apple" },
     { chinese: "吃面包", pinyin: "chī miàn bāo", english: "eat bread" },
     { chinese: "看电视", pinyin: "kàn diàn shì", english: "watch TV" },
+    { chinese: "想", pinyin: "xiǎng", english: "would like / want to" },
+    { chinese: "需要", pinyin: "xū yào", english: "need" },
     // Verb + 了 forms for completed actions
     { chinese: "吃了", pinyin: "chī le", english: "ate" },
     { chinese: "喝了", pinyin: "hē le", english: "drank" },
@@ -141,6 +143,8 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "椅子", pinyin: "yǐ zi", english: "chair" },
     { chinese: "厨房", pinyin: "chú fáng", english: "kitchen" },
     { chinese: "杯子", pinyin: "bēi zi", english: "cup / glass" },
+    { chinese: "时间", pinyin: "shí jiān", english: "time" },
+    { chinese: "食物", pinyin: "shí wù", english: "food" },
   ],
   adjective: [
     { chinese: "大", pinyin: "dà", english: "big" },
