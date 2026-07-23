@@ -83,6 +83,12 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "看电视", pinyin: "kàn diàn shì", english: "watch TV" },
     { chinese: "想", pinyin: "xiǎng", english: "would like / want to" },
     { chinese: "需要", pinyin: "xū yào", english: "need" },
+    { chinese: "直走", pinyin: "zhí zǒu", english: "go straight" },
+    { chinese: "左转", pinyin: "zuǒ zhuǎn", english: "turn left" },
+    { chinese: "右转", pinyin: "yòu zhuǎn", english: "turn right" },
+    { chinese: "往前走", pinyin: "wǎng qián zǒu", english: "go forward" },
+    { chinese: "往回走", pinyin: "wǎng huí zǒu", english: "go back" },
+    { chinese: "一直走", pinyin: "yī zhí zǒu", english: "go straight ahead" },
     // Verb + 了 forms for completed actions
     { chinese: "吃了", pinyin: "chī le", english: "ate" },
     { chinese: "喝了", pinyin: "hē le", english: "drank" },
@@ -145,6 +151,15 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "杯子", pinyin: "bēi zi", english: "cup / glass" },
     { chinese: "时间", pinyin: "shí jiān", english: "time" },
     { chinese: "食物", pinyin: "shí wù", english: "food" },
+    { chinese: "路口", pinyin: "lù kǒu", english: "intersection" },
+    { chinese: "红绿灯", pinyin: "hóng lǜ dēng", english: "traffic light" },
+    { chinese: "拐角", pinyin: "guǎi jiǎo", english: "corner" },
+    { chinese: "左边", pinyin: "zuǒ biān", english: "left side" },
+    { chinese: "右边", pinyin: "yòu biān", english: "right side" },
+    { chinese: "前面", pinyin: "qián miàn", english: "front" },
+    { chinese: "后面", pinyin: "hòu miàn", english: "back / behind" },
+    { chinese: "旁边", pinyin: "páng biān", english: "beside / nearby" },
+    { chinese: "对面", pinyin: "duì miàn", english: "opposite side" },
   ],
   adjective: [
     { chinese: "大", pinyin: "dà", english: "big" },
@@ -252,6 +267,7 @@ export const wordBank: Record<PartOfSpeech, DistractorEntry[]> = {
     { chinese: "还", pinyin: "hái", english: "still / also" },
     { chinese: "应该", pinyin: "yīng gāi", english: "should / ought to" },
     { chinese: "正在", pinyin: "zhèng zài", english: "in the process of" },
+    { chinese: "然后", pinyin: "rán hòu", english: "then / after that" },
   ],
 };
 

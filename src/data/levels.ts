@@ -71,6 +71,14 @@ import { xuyao01BasicNeeds } from "./levels/xuyao/xuyao-01-basic-needs";
 import { xuyao02WorkStudy } from "./levels/xuyao/xuyao-02-work-study";
 import { xuyao03HealthLife } from "./levels/xuyao/xuyao-03-health-life";
 
+// Import directions sub-levels
+import { dir01Basic } from "./levels/dir/dir-01-basic";
+import { dir02Intersection } from "./levels/dir/dir-02-intersection";
+import { dir03TwoStep } from "./levels/dir/dir-03-two-step";
+import { dir04FullDirections } from "./levels/dir/dir-04-full-directions";
+import { dir05Landmarks } from "./levels/dir/dir-05-landmarks";
+import { dir06Location } from "./levels/dir/dir-06-location";
+
 // All levels in order
 export const allLevels: Level[] = [
   mixChallenge,
@@ -116,6 +124,12 @@ export const allLevels: Level[] = [
   xuyao01BasicNeeds,
   xuyao02WorkStudy,
   xuyao03HealthLife,
+  dir01Basic,
+  dir02Intersection,
+  dir03TwoStep,
+  dir04FullDirections,
+  dir05Landmarks,
+  dir06Location,
 ];
 
 // Index levels by ID for quick lookup
